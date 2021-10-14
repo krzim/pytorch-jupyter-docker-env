@@ -5,7 +5,7 @@ services:
       context: .docker
     # below from https://github.com/iot-salzburg/gpu-jupyter/blob/master/docker-compose.yml
     ports:
-      - 8848:8888
+      - 127.0.0.1:8848:8888
     volumes:
       - ./data:/home/jovyan/work
     environment:
