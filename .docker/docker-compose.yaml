@@ -3,6 +3,14 @@ services:
   pytorch-jupyter:
     build:
       context: .docker
+    # enable gpu usage
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]
     # below from https://github.com/iot-salzburg/gpu-jupyter/blob/master/docker-compose.yml
     ports:
       - 127.0.0.1:8848:8888
