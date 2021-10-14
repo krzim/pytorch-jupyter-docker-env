@@ -3,3 +3,17 @@ services:
   pytorch-jupyter:
     build:
       context: .docker
+    # below from https://github.com/iot-salzburg/gpu-jupyter/blob/master/docker-compose.yml
+    ports:
+      - 8848:8888
+    volumes:
+      - ./data:/home/jovyan/work
+    environment:
+      GRANT_SUDO: "yes"
+      JUPYTER_ENABLE_LAB: "yes"
+      NB_UID: ${JUPYTER_UID:-1000}
+      NB_GID: ${JUPYTER_GID:-1000}
+    # enable sudo permissions
+    user:
+      "root"
+    restart: always
