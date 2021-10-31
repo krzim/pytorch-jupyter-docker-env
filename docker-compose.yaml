@@ -2,7 +2,7 @@ version: "3.7"
 services:
   pytorch-jupyter:
     build:
-      context: .docker
+      context: .
     # enable gpu usage
     deploy:
       resources:
@@ -15,7 +15,8 @@ services:
     ports:
       - 127.0.0.1:8848:8888
     volumes:
-      - ./data:/home/jovyan/work
+      - ./src:/home/jovyan/work
+      - ./jupyter:/home/jovyan/.jupyter
     environment:
       GRANT_SUDO: "yes"
       JUPYTER_ENABLE_LAB: "yes"
